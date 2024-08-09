@@ -17,13 +17,13 @@ function App() {
     //         .then(json => console.log(json))
     // }
     const fetchWeather = () => {        
-        const apiKey = '1ce2c8f1225f14bf33b893989c1548cf';         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)            
+        const apiKey = '1ce2c8f1225f14bf33b893989c1548cf';         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)            
     .then(response => response.json())            
     .then(json => {                
         if (json.cod === "404") {setError('City not found');             
         } else {                    
             setWeather({
-                temp: json.main.temp - 273.15,
+                temp: json.main.temp,
                 description: json.weather[0].description
             })
             setError(null);
